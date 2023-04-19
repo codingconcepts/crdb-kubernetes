@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init
+  labels:
+    app: cockroachdb
+spec:
+  template:
+    spec:
+      containers:
+      - name: init
+        image: cockroachdb/cockroach:v22.2.6
+        imagePullPolicy: IfNotPresent
+        command:
+          - "/bin/bash"
+          - "-ecx"
+          - exec
+            /cockroach/cockroach
+            init
+            --logtostderr
+            --insecure
+            --host=cockroachdb-0.cockroachdb
+      restartPolicy: Never
