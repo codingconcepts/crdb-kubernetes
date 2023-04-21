@@ -35,7 +35,6 @@ Apply CockroachDB stateful set:
 ```
 kubectl apply -f manifests/statefulset.yaml
 kubectl apply -f manifests/init.yaml
-kubectl apply -f manifests/ingress.yaml
 
 see -n 1 kubectl get pods
 ```
